@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:math_application/utils/constant/colors.dart';
+
+import '../../constant/colors.dart';
 
 class MAppBarTheme {
   MAppBarTheme._();

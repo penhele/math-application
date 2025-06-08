@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../../utils/constant/sizes.dart';
+
 class CourseCard extends StatelessWidget {
   const CourseCard({
     super.key,
@@ -18,7 +20,7 @@ class CourseCard extends StatelessWidget {
       height: 50,
       width: 175,
       decoration: BoxDecoration(
-        borderRadius: BorderRadius.circular(12),
+        borderRadius: BorderRadius.circular(MSizes.borderRadiusLg),
         color: backgroundColor,
       ),
       child: Padding(

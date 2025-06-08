@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:math_application/utils/constant/colors.dart';
 
 import '../../utils/constant/sizes.dart';
 import '../widget/course_container.dart';
+import '../widget/quiz_container.dart';
 import '../widget/section_heading.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -25,6 +25,12 @@ class HomeScreen extends StatelessWidget {
 
               CourseContainer(),
               SizedBox(height: MSizes.spaceBtwSections),
+
+              // Kuis
+              MSectionHeading(title: 'Kuis'),
+              SizedBox(height: MSizes.spaceBtwItems),
+
+              QuizContainer(),
             ],
           ),
         ),

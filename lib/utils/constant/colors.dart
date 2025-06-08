@@ -7,7 +7,7 @@ class MColors {
 
   static const Color blue = Color(0xFF3435DB);
   static const Color red = Color(0xFFFF5C6A);
-  static const Color green = Color(0xFF30EB9C);
+  static const Color green = Color(0xFF33CE95);
   static const Color yellow = Color(0xFFFFBB28);
 
   static const Color white = Color(0xFFFFFFFF);
