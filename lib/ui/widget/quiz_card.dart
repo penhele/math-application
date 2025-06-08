@@ -8,14 +8,16 @@ class QuizCard extends StatelessWidget {
     super.key,
     required this.height,
     required this.totalQuestions,
-    required this.backgroundColor,
+    required this.color,
     required this.top,
+    required this.title,
   });
 
   final double height;
   final int totalQuestions;
-  final Color backgroundColor;
+  final Color color;
   final bool top;
+  final String title;
 
   @override
   Widget build(BuildContext context) {
@@ -23,22 +25,22 @@ class QuizCard extends StatelessWidget {
       height: height,
       width: 175,
       decoration: BoxDecoration(
-        color: backgroundColor.withValues(alpha: 0.1),
+        color: color.withValues(alpha: 0.1),
         borderRadius: BorderRadius.circular(MSizes.borderRadiusLg),
       ),
-      child: Stack(
-        children: [
-          Positioned(
-            top: top ? 0 : null,
-            bottom: top ? null : 0,
-            right: 0,
-            child: Padding(
-              padding: const EdgeInsets.all(MSizes.sm),
+      child: Padding(
+        padding: const EdgeInsets.all(MSizes.md),
+        child: Stack(
+          children: [
+            Positioned(
+              top: top ? 0 : null,
+              bottom: top ? null : 0,
+              right: 0,
               child: Container(
                 height: 25,
                 width: 60,
                 decoration: BoxDecoration(
-                  color: backgroundColor,
+                  color: color,
                   borderRadius: BorderRadius.circular(MSizes.borderRadiusMd),
                 ),
                 child: Center(
@@ -51,8 +53,20 @@ class QuizCard extends StatelessWidget {
                 ),
               ),
             ),
-          ),
-        ],
+
+            Positioned(
+              top: top ? null : 0,
+              bottom: top ? 0 : null,
+              left: 0,
+              child: Text(
+                title,
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge!.copyWith(color: color),
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }

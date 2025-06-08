@@ -18,16 +18,18 @@ class QuizContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             QuizCard(
+              title: 'Penjumlahan',
               height: 220,
               totalQuestions: 10,
-              backgroundColor: MColors.blue,
+              color: MColors.blue,
               top: true,
             ),
             SizedBox(height: MSizes.spaceBtwItems),
             QuizCard(
+              title: 'Pengurangan',
               height: 180,
               totalQuestions: 10,
-              backgroundColor: MColors.red,
+              color: MColors.red,
               top: false,
             ),
           ],
@@ -37,16 +39,18 @@ class QuizContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             QuizCard(
+              title: 'Perkalian',
               height: 180,
               totalQuestions: 10,
-              backgroundColor: MColors.green,
+              color: MColors.green,
               top: true,
             ),
             SizedBox(height: MSizes.spaceBtwItems),
             QuizCard(
+              title: 'Pembagian',
               height: 220,
               totalQuestions: 10,
-              backgroundColor: MColors.yellow,
+              color: MColors.yellow,
               top: false,
             ),
           ],
