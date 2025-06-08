@@ -9,6 +9,7 @@ class MSizes {
   static const double xl = 32.0;
 
   // Default spacing
+  static const double spaceBtwMenu = 12.0;
   static const double spaceBtwItems = 16.0;
   static const double spaceBtwSections = 32.0;
 

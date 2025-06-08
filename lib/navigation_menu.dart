@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import 'ui/home/home.dart';
+import 'ui/profile/profile.dart';
 import 'utils/constant/colors.dart';
 import 'utils/helper/helper_function.dart';
 
@@ -40,5 +41,5 @@ class NavigationMenu extends StatelessWidget {
 class NavigationController extends GetxController {
   final Rx<int> selectedIndex = 0.obs;
 
-  final screens = [const HomeScreen(), Container(color: Colors.orange)];
+  final screens = [const HomeScreen(), const ProfileScreen()];
 }

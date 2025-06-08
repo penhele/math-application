@@ -1,11 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:provider/provider.dart';
 
 import 'navigation_menu.dart';
+import 'provider/mode_provider.dart';
 import 'utils/theme/theme.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(
+    MultiProvider(
+      providers: [ChangeNotifierProvider(create: (context) => ModeProvider())],
+
+      child: const MyApp(),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -14,7 +22,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      themeMode: ThemeMode.system,
+      themeMode: Provider.of<ModeProvider>(context).lightModeEnable ? ThemeMode.light : ThemeMode.dark,
       theme: MAppTheme.lightTheme,
       darkTheme: MAppTheme.darkTheme,
       home: const NavigationMenu(),

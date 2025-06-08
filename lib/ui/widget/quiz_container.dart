@@ -23,7 +23,7 @@ class QuizContainer extends StatelessWidget {
               color: MColors.blue,
               top: true,
             ),
-            const SizedBox(height: MSizes.spaceBtwItems),
+            const SizedBox(height: MSizes.spaceBtwMenu),
             QuizCard(
               onPressed: () {},
               title: 'Pengurangan',
@@ -34,7 +34,7 @@ class QuizContainer extends StatelessWidget {
             ),
           ],
         ),
-        const SizedBox(width: MSizes.spaceBtwItems),
+        const SizedBox(width: MSizes.spaceBtwMenu),
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
@@ -46,7 +46,7 @@ class QuizContainer extends StatelessWidget {
               color: MColors.green,
               top: true,
             ),
-            const SizedBox(height: MSizes.spaceBtwItems),
+            const SizedBox(height: MSizes.spaceBtwMenu),
             QuizCard(
               onPressed: () {},
               title: 'Pembagian',

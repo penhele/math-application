@@ -14,8 +14,8 @@ class CourseContainer extends StatelessWidget {
       children: [
         Center(
           child: Wrap(
-            spacing: MSizes.spaceBtwItems,
-            runSpacing: MSizes.spaceBtwItems,
+            spacing: MSizes.spaceBtwMenu,
+            runSpacing: MSizes.spaceBtwMenu,
             children: [
               CourseCard(
                 iconData: Iconsax.add,
