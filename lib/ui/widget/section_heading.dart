@@ -7,9 +7,6 @@ class MSectionHeading extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
-      title,
-      style: Theme.of(context).textTheme.headlineSmall,
-    );
+    return Text(title, style: Theme.of(context).textTheme.headlineSmall);
   }
 }

@@ -22,6 +22,6 @@ class MAppTheme {
     brightness: Brightness.dark,
     textTheme: MTextTheme.darkTextTheme,
     scaffoldBackgroundColor: MColors.black,
-    appBarTheme: MAppBarTheme.darkAppBarTheme
+    appBarTheme: MAppBarTheme.darkAppBarTheme,
   );
 }

@@ -19,7 +19,7 @@ class MAppBarTheme {
     titleTextStyle: TextStyle(
       fontSize: 18.0,
       fontWeight: FontWeight.w600,
-      color: MColors.white
-    )
+      color: MColors.white,
+    ),
   );
 }
