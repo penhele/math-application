@@ -3,7 +3,7 @@ import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
 
 import 'ui/home/home.dart';
-import 'utils/color/color.dart';
+import 'utils/constant/colors.dart';
 import 'utils/helper/helper_function.dart';
 
 class NavigationMenu extends StatelessWidget {
@@ -19,10 +19,10 @@ class NavigationMenu extends StatelessWidget {
         () => NavigationBar(
           height: 80,
           elevation: 0,
-          backgroundColor: isDark ? MColor.black : MColor.white,
+          backgroundColor: isDark ? MColors.black : MColors.white,
           indicatorColor: isDark
-              ? MColor.white.withValues(alpha: 0.1)
-              : MColor.black.withValues(alpha: 0.1),
+              ? MColors.white.withValues(alpha: 0.1)
+              : MColors.black.withValues(alpha: 0.1),
           selectedIndex: controller.selectedIndex.value,
           onDestinationSelected: (index) =>
               controller.selectedIndex.value = index,

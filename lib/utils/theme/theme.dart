@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:math_application/utils/theme/custom_themes/appbar_theme.dart';
 
-import '../color/color.dart';
+import '../constant/colors.dart';
 import 'custom_themes/text_theme.dart';
 
 class MAppTheme {
@@ -11,7 +12,8 @@ class MAppTheme {
     fontFamily: 'Poppins',
     brightness: Brightness.light,
     textTheme: MTextTheme.lightTextTheme,
-    scaffoldBackgroundColor: MColor.white,
+    scaffoldBackgroundColor: MColors.white,
+    appBarTheme: MAppBarTheme.lightAppBarTheme,
   );
 
   static ThemeData darkTheme = ThemeData(
@@ -19,6 +21,7 @@ class MAppTheme {
     fontFamily: 'Poppins',
     brightness: Brightness.dark,
     textTheme: MTextTheme.darkTextTheme,
-    scaffoldBackgroundColor: MColor.black,
+    scaffoldBackgroundColor: MColors.black,
+    appBarTheme: MAppBarTheme.darkAppBarTheme
   );
 }
