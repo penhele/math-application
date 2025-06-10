@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../utils/constant/colors.dart';
 import '../../utils/constant/sizes.dart';
+import '../../utils/helper/helper_function.dart';
 import 'quiz_card.dart';
 
 class QuizContainer extends StatelessWidget {
@@ -9,6 +10,8 @@ class QuizContainer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = MHelperFunction.isDarkMode(context);
+
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: [
@@ -20,7 +23,7 @@ class QuizContainer extends StatelessWidget {
               title: 'Penjumlahan',
               height: 220,
               totalQuestions: 10,
-              color: MColors.blue,
+              color: isDark ? Color(0xFF3949AB) : MColors.blue,
               top: true,
             ),
             const SizedBox(height: MSizes.spaceBtwMenu),
@@ -29,7 +32,7 @@ class QuizContainer extends StatelessWidget {
               title: 'Pengurangan',
               height: 180,
               totalQuestions: 10,
-              color: MColors.red,
+              color: isDark ? Color(0xFFD32F2F) : MColors.red,
               top: false,
             ),
           ],
@@ -43,7 +46,7 @@ class QuizContainer extends StatelessWidget {
               title: 'Perkalian',
               height: 180,
               totalQuestions: 10,
-              color: MColors.green,
+              color: isDark ? Color(0xFF388E3C) : MColors.green,
               top: true,
             ),
             const SizedBox(height: MSizes.spaceBtwMenu),
@@ -52,7 +55,7 @@ class QuizContainer extends StatelessWidget {
               title: 'Pembagian',
               height: 220,
               totalQuestions: 10,
-              color: MColors.yellow,
+              color: isDark ? Color(0xFFFBC02D) : MColors.yellow,
               top: false,
             ),
           ],

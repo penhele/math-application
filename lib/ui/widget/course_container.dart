@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
+import 'package:math_application/ui/course/pertambahan.dart';
 
 import '../../utils/constant/colors.dart';
 import '../../utils/constant/sizes.dart';
@@ -21,7 +23,7 @@ class CourseContainer extends StatelessWidget {
                 iconData: Iconsax.add,
                 title: 'Penjumlahan',
                 backgroundColor: MColors.blue.withValues(alpha: 0.1),
-                onPressed: () {},
+                onPressed: () => Get.to(() => const PertambahanScreen()),
               ),
               CourseCard(
                 iconData: Iconsax.minus,

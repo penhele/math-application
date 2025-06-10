@@ -12,6 +12,7 @@ class MAppBarTheme {
       fontWeight: FontWeight.w600,
       color: MColors.white,
     ),
+    iconTheme: IconThemeData(color: MColors.white, size: 24),
   );
 
   static const darkAppBarTheme = AppBarTheme(
@@ -21,5 +22,6 @@ class MAppBarTheme {
       fontWeight: FontWeight.w600,
       color: MColors.white,
     ),
+    iconTheme: IconThemeData(color: MColors.white, size: 24),
   );
 }

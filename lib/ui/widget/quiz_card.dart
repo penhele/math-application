@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:math_application/utils/helper/helper_function.dart';
 
 import '../../utils/constant/colors.dart';
 import '../../utils/constant/sizes.dart';
@@ -23,6 +24,8 @@ class QuizCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = MHelperFunction.isDarkMode(context);
+
     return InkWell(
       onTap: onPressed,
       borderRadius: BorderRadius.circular(MSizes.borderRadiusLg),
