@@ -48,10 +48,10 @@ class CourseScreen extends StatelessWidget {
               );
             } else {
               return MPageButton(
-                title: 'Selesai', 
+                title: 'Selesai',
                 right: MSizes.paddingAll,
                 onPressed: () {
-                  Get.back(); 
+                  Get.back();
                 },
               );
             }

@@ -19,13 +19,19 @@ class CourseController extends GetxController {
 
   void nextPage() {
     if (currentPage.value < totalPages - 1) {
-      pageController.nextPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+      pageController.nextPage(
+        duration: Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
     }
   }
 
   void previousPage() {
     if (currentPage.value > 0) {
-      pageController.previousPage(duration: Duration(milliseconds: 300), curve: Curves.ease);
+      pageController.previousPage(
+        duration: Duration(milliseconds: 300),
+        curve: Curves.ease,
+      );
     }
   }
 }

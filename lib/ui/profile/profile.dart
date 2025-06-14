@@ -36,7 +36,7 @@ class ProfileScreen extends StatelessWidget {
 
             const MSectionHeading(title: 'General Settings'),
             const SizedBox(height: MSizes.spaceBtwItems),
-            
+
             MenuItem(
               title: 'Dark Mode',
               widget: FlutterSwitch(
