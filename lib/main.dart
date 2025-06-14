@@ -22,7 +22,9 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GetMaterialApp(
-      themeMode: Provider.of<ModeProvider>(context).lightModeEnable ? ThemeMode.light : ThemeMode.dark,
+      themeMode: Provider.of<ModeProvider>(context).lightModeEnable
+          ? ThemeMode.light
+          : ThemeMode.dark,
       theme: MAppTheme.lightTheme,
       darkTheme: MAppTheme.darkTheme,
       home: const NavigationMenu(),

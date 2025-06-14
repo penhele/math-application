@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/constant/sizes.dart';
+import '../course/course.dart';
 
 class CourseCard extends StatelessWidget {
   const CourseCard({
@@ -8,18 +10,16 @@ class CourseCard extends StatelessWidget {
     required this.title,
     this.iconData,
     required this.backgroundColor,
-    required this.onPressed,
   });
 
   final String title;
   final IconData? iconData;
   final Color backgroundColor;
-  final VoidCallback? onPressed;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: () => Get.to(() => const CourseScreen()),
       borderRadius: BorderRadius.circular(MSizes.borderRadiusLg),
       splashColor: backgroundColor.withValues(alpha: 0.2),
       child: Container(

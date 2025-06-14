@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:math_application/ui/course/pertambahan.dart';
 
 import '../../utils/constant/colors.dart';
 import '../../utils/constant/sizes.dart';
@@ -20,28 +18,24 @@ class CourseContainer extends StatelessWidget {
             runSpacing: MSizes.spaceBtwMenu,
             children: [
               CourseCard(
-                iconData: Iconsax.add,
+                iconData: Icons.add,
                 title: 'Penjumlahan',
                 backgroundColor: MColors.blue.withValues(alpha: 0.1),
-                onPressed: () => Get.to(() => const PertambahanScreen()),
               ),
               CourseCard(
                 iconData: Iconsax.minus,
                 title: 'Pengurangan',
                 backgroundColor: MColors.red.withValues(alpha: 0.1),
-                onPressed: () {},
               ),
               CourseCard(
                 iconData: Icons.close,
                 title: 'Perkalian',
                 backgroundColor: MColors.green.withValues(alpha: 0.1),
-                onPressed: () {},
               ),
               CourseCard(
                 iconData: Icons.percent,
                 title: 'Pembagian',
                 backgroundColor: MColors.yellow.withValues(alpha: 0.1),
-                onPressed: () {},
               ),
             ],
           ),

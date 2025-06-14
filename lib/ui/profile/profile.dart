@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_switch/flutter_switch.dart';
 import 'package:iconsax/iconsax.dart';
-import 'package:math_application/utils/helper/helper_function.dart';
 import 'package:provider/provider.dart';
 
 import '../../provider/mode_provider.dart';
+import '../../utils/constant/colors.dart';
 import '../../utils/constant/sizes.dart';
+import '../../utils/helper/helper_function.dart';
+import '../widget/menu_item.dart';
 import '../widget/section_heading.dart';
 
 class ProfileScreen extends StatelessWidget {
@@ -33,43 +36,33 @@ class ProfileScreen extends StatelessWidget {
 
             const MSectionHeading(title: 'General Settings'),
             const SizedBox(height: MSizes.spaceBtwItems),
-
+            
             MenuItem(
               title: 'Dark Mode',
-              widget: ElevatedButton.icon(
-                onPressed: () {
+              widget: FlutterSwitch(
+                width: 60.0,
+                height: 30.0,
+                toggleSize: 25.0,
+                value: isDark,
+                borderRadius: 30.0,
+                padding: 2.0,
+                activeColor: Colors.black87,
+                inactiveColor: Colors.grey.shade300,
+                activeToggleColor: MColors.white,
+                inactiveToggleColor: MColors.white,
+                activeIcon: Icon(Iconsax.moon, color: Colors.black, size: 16),
+                inactiveIcon: Icon(Icons.sunny, color: Colors.orange, size: 16),
+                onToggle: (val) {
                   Provider.of<ModeProvider>(
                     context,
                     listen: false,
                   ).changeMode();
                 },
-                icon: isDark
-                    ? const Icon(Iconsax.moon)
-                    : const Icon(Icons.sunny),
-                label: isDark ? const Text('Dark') : const Text('Light'),
               ),
             ),
           ],
         ),
       ),
-    );
-  }
-}
-
-class MenuItem extends StatelessWidget {
-  const MenuItem({super.key, required this.title, required this.widget});
-
-  final String title;
-  final Widget widget;
-
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: [
-        Text(title, style: Theme.of(context).textTheme.titleSmall),
-        widget,
-      ],
     );
   }
 }
