@@ -12,6 +12,7 @@ class QuizScreen extends StatelessWidget {
       body: Stack(
         children: [
           PageView(
+            physics: NeverScrollableScrollPhysics(),
             children: [
               QuizPage(title: 'Soal 1'),
               QuizPage(title: 'Soal 2'),

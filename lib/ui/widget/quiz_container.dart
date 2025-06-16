@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../utils/constant/colors.dart';
 import '../../utils/constant/sizes.dart';
 import '../../utils/helper/helper_function.dart';
-import '../quiz/quiz.dart';
 import 'quiz_card.dart';
 
 class QuizContainer extends StatelessWidget {
@@ -21,7 +19,6 @@ class QuizContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             QuizCard(
-              onPressed: () => Get.to(() => QuizScreen()),
               title: 'Penjumlahan',
               height: 220,
               totalQuestions: 10,
@@ -30,7 +27,6 @@ class QuizContainer extends StatelessWidget {
             ),
             const SizedBox(height: MSizes.spaceBtwMenu),
             QuizCard(
-              onPressed: () {},
               title: 'Pengurangan',
               height: 180,
               totalQuestions: 10,
@@ -44,7 +40,6 @@ class QuizContainer extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             QuizCard(
-              onPressed: () {},
               title: 'Perkalian',
               height: 180,
               totalQuestions: 10,
@@ -53,7 +48,6 @@ class QuizContainer extends StatelessWidget {
             ),
             const SizedBox(height: MSizes.spaceBtwMenu),
             QuizCard(
-              onPressed: () {},
               title: 'Pembagian',
               height: 220,
               totalQuestions: 10,

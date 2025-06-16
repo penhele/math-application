@@ -19,27 +19,56 @@ class QuizPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               MSectionHeading(title: title),
-              SizedBox(height: MSizes.spaceBtwItems),
+              const SizedBox(height: MSizes.spaceBtwItems),
             ],
           ),
-
           Positioned(
             bottom: 100,
             right: 0,
             left: 0,
-            child: Center(
-              child: Wrap(
-                spacing: MSizes.spaceBtwMenu,
-                runSpacing: MSizes.spaceBtwMenu,
-                children: [
-                  AnswerCard(answer: '1'),
-                  AnswerCard(answer: '2'),
-                  AnswerCard(answer: '3'),
-                  AnswerCard(answer: '4'),
-                  AnswerCard(answer: '5'),
-                  AnswerCard(answer: '6'),
-                ],
-              ),
+            child: Column(
+              children: [
+                LayoutBuilder(
+                  builder: (context, constraints) {
+                    const itemPerRow = 3;
+                    final totalSpacing = (itemPerRow - 1) * MSizes.spaceBtwMenu;
+                    final itemWidth =
+                        (constraints.maxWidth - totalSpacing) / itemPerRow;
+
+                    return Wrap(
+                      spacing: MSizes.spaceBtwMenu,
+                      runSpacing: MSizes.spaceBtwMenu,
+                      children: [
+                        for (var answer in ['1', '2', '3', '4', '5', '6'])
+                          SizedBox(
+                            width: itemWidth,
+                            child: AnswerCard(answer: answer),
+                          ),
+                      ],
+                    );
+                  },
+                ),
+
+                SizedBox(height: MSizes.spaceBtwItems),
+
+                Row(
+                  children: [
+                    Expanded(
+                      child: OutlinedButton(
+                        onPressed: () {},
+                        child: Text('Sebelumnya'),
+                      ),
+                    ),
+                    SizedBox(width: MSizes.spaceBtwItems),
+                    Expanded(
+                      child: ElevatedButton(
+                        onPressed: () {},
+                        child: Text('Kirim'),
+                      ),
+                    ),
+                  ],
+                ),
+              ],
             ),
           ),
         ],

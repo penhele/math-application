@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/constant/colors.dart';
 import '../../utils/constant/sizes.dart';
+import '../quiz/quiz.dart';
 
 class QuizCard extends StatelessWidget {
   const QuizCard({
@@ -11,7 +13,6 @@ class QuizCard extends StatelessWidget {
     required this.color,
     required this.top,
     required this.title,
-    required this.onPressed,
   });
 
   final double height;
@@ -19,12 +20,11 @@ class QuizCard extends StatelessWidget {
   final Color color;
   final bool top;
   final String title;
-  final VoidCallback onPressed;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: onPressed,
+      onTap: () => Get.to(() => QuizScreen()),
       borderRadius: BorderRadius.circular(MSizes.borderRadiusLg),
       splashColor: color.withValues(alpha: 0.2),
       child: Container(
