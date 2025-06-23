@@ -36,7 +36,7 @@ class CourseCard extends StatelessWidget {
             children: [
               Icon(iconData, size: 22),
               const SizedBox(width: 12),
-              Text(title, style: Theme.of(context).textTheme.titleMedium),
+              Text(title, style: Theme.of(context).textTheme.titleSmall),
             ],
           ),
         ),

@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../utils/constant/sizes.dart';
 import '../widget/section_heading.dart';
 import 'answer_card.dart';
+import 'quiz_controller.dart';
 
 class QuizPage extends StatelessWidget {
   const QuizPage({super.key, required this.title});
@@ -11,6 +13,8 @@ class QuizPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final controller = Get.put(QuizController());
+
     return Padding(
       padding: const EdgeInsets.all(MSizes.paddingAll),
       child: Stack(
@@ -55,14 +59,14 @@ class QuizPage extends StatelessWidget {
                   children: [
                     Expanded(
                       child: OutlinedButton(
-                        onPressed: () {},
+                        onPressed: () => controller.previousPage(),
                         child: Text('Sebelumnya'),
                       ),
                     ),
                     SizedBox(width: MSizes.spaceBtwItems),
                     Expanded(
                       child: ElevatedButton(
-                        onPressed: () {},
+                        onPressed: () => controller.nextPage(),
                         child: Text('Kirim'),
                       ),
                     ),
