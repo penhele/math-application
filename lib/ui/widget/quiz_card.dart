@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import '../../utils/constant/colors.dart';
 import '../../utils/constant/sizes.dart';
 import '../quiz/quiz.dart';
+import '../quiz/quiz_controller.dart';
 
 class QuizCard extends StatelessWidget {
   const QuizCard({
@@ -24,7 +25,10 @@ class QuizCard extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.to(() => QuizScreen()),
+      onTap: () {
+        Get.delete<QuizController>();
+        Get.to(() => QuizScreen());
+      },
       borderRadius: BorderRadius.circular(MSizes.borderRadiusLg),
       splashColor: color.withValues(alpha: 0.2),
       child: Container(

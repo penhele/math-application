@@ -1,19 +1,22 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../data/question.dart';
 import '../../utils/constant/sizes.dart';
+import '../point/point.dart';
 import '../widget/section_heading.dart';
 import 'answer_card.dart';
 import 'quiz_controller.dart';
 
 class QuizPage extends StatelessWidget {
-  const QuizPage({super.key, required this.title});
+  const QuizPage({super.key, required this.question, required this.index});
 
-  final String title;
+  final QuizQuestion question;
+  final int index;
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(QuizController());
+    final controller = Get.find<QuizController>();
 
     return Padding(
       padding: const EdgeInsets.all(MSizes.paddingAll),
@@ -22,8 +25,16 @@ class QuizPage extends StatelessWidget {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              MSectionHeading(title: title),
-              const SizedBox(height: MSizes.spaceBtwItems),
+              MSectionHeading(title: 'Soal ${index + 1}'),
+              const SizedBox(height: MSizes.spaceBtwSections),
+              Center(
+                child: Text(
+                  question.question,
+                  style: Theme.of(
+                    context,
+                  ).textTheme.titleLarge!.copyWith(fontSize: 30),
+                ),
+              ),
             ],
           ),
           Positioned(
@@ -39,35 +50,65 @@ class QuizPage extends StatelessWidget {
                     final itemWidth =
                         (constraints.maxWidth - totalSpacing) / itemPerRow;
 
-                    return Wrap(
-                      spacing: MSizes.spaceBtwMenu,
-                      runSpacing: MSizes.spaceBtwMenu,
-                      children: [
-                        for (var answer in ['1', '2', '3', '4', '5', '6'])
-                          SizedBox(
+                    return Obx(() {
+                      final selectedAnswer = controller.selectedAnswers[index];
+
+                      return Wrap(
+                        spacing: MSizes.spaceBtwMenu,
+                        runSpacing: MSizes.spaceBtwMenu,
+                        children: question.options.map((answer) {
+                          final isSelected = answer == selectedAnswer;
+
+                          return SizedBox(
                             width: itemWidth,
-                            child: AnswerCard(answer: answer),
-                          ),
-                      ],
-                    );
+                            child: AnswerCard(
+                              answer: answer,
+                              isSelected: isSelected,
+                              onTap: () =>
+                                  controller.selectAnswer(index, answer),
+                            ),
+                          );
+                        }).toList(),
+                      );
+                    });
                   },
                 ),
-
-                SizedBox(height: MSizes.spaceBtwItems),
-
+                const SizedBox(height: MSizes.spaceBtwItems),
                 Row(
                   children: [
                     Expanded(
-                      child: OutlinedButton(
-                        onPressed: () => controller.previousPage(),
-                        child: Text('Sebelumnya'),
+                      child: SizedBox(
+                        height: 50,
+                        child: OutlinedButton(
+                          onPressed: () {
+                            controller.previousPage();
+                          },
+                          child: Text('Sebelumnya'),
+                        ),
                       ),
                     ),
-                    SizedBox(width: MSizes.spaceBtwItems),
+                    const SizedBox(width: MSizes.spaceBtwItems),
                     Expanded(
-                      child: ElevatedButton(
-                        onPressed: () => controller.nextPage(),
-                        child: Text('Kirim'),
+                      child: SizedBox(
+                        height: 50,
+                        child: ElevatedButton(
+                          onPressed: () {
+                            if (controller.currentPage.value ==
+                                controller.questions.length - 1) {
+                              Get.to(() => const PointScreen());
+                            } else {
+                              controller.nextPage();
+                            }
+                          },
+                          child: Obx(
+                            () => Text(
+                              controller.currentPage.value ==
+                                      controller.questions.length - 1
+                                  ? 'Selesai'
+                                  : 'Lanjut',
+                            ),
+                          ),
+                        ),
                       ),
                     ),
                   ],

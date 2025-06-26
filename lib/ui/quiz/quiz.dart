@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../data/question.dart';
 import 'exit_dialog.dart';
 import 'quiz_controller.dart';
 import 'quiz_page.dart';
@@ -29,11 +30,11 @@ class QuizScreen extends StatelessWidget {
             PageView(
               controller: controller.pageController,
               physics: const NeverScrollableScrollPhysics(),
-              children: const [
-                QuizPage(title: 'Soal 1'),
-                QuizPage(title: 'Soal 2'),
-                QuizPage(title: 'Soal 3'),
-              ],
+              children: List.generate(
+                sampleQuestions.length,
+                (index) =>
+                    QuizPage(question: sampleQuestions[index], index: index),
+              ),
             ),
           ],
         ),

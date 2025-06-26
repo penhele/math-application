@@ -13,7 +13,7 @@ class MElevatedButtonTheme {
       disabledForegroundColor: MColors.grey,
       disabledBackgroundColor: MColors.grey,
       side: const BorderSide(color: MColors.primary),
-      padding: const EdgeInsets.symmetric(vertical: 18),
+      padding: const EdgeInsets.all(0),
       textStyle: const TextStyle(
         fontSize: 16,
         color: MColors.white,
@@ -31,7 +31,7 @@ class MElevatedButtonTheme {
       disabledForegroundColor: MColors.grey,
       disabledBackgroundColor: MColors.grey,
       side: const BorderSide(color: MColors.primary),
-      padding: const EdgeInsets.symmetric(vertical: 18),
+      padding: const EdgeInsets.all(0),
       textStyle: const TextStyle(
         fontSize: 16,
         color: MColors.white,
