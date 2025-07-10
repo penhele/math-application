@@ -3,7 +3,9 @@ import 'package:get/get.dart';
 
 import '../../utils/constant/sizes.dart';
 import 'course_controller.dart';
-import 'course_page.dart';
+import 'example/example.dart';
+import 'exercise/exercise.dart';
+import 'intro/intro.dart';
 import 'page_button.dart';
 
 class CourseScreen extends StatelessWidget {
@@ -22,9 +24,9 @@ class CourseScreen extends StatelessWidget {
             controller: controller.pageController,
             physics: NeverScrollableScrollPhysics(),
             children: [
-              MCoursePage(title: 'Apa itu Pertambahan?'),
-              MCoursePage(title: 'Conton Pertambahan'),
-              MCoursePage(title: 'Soal Pertambahan'),
+              IntroPage(),
+              ExamplePage(),
+              ExercisePage()
             ],
           ),
 

@@ -26,6 +26,7 @@ class MPageButton extends StatelessWidget {
       bottom: MSizes.paddingAll,
       child: SizedBox(
         width: 175,
+        height: 50,
         child: isOutlined
             ? OutlinedButton(onPressed: onPressed, child: Text(title))
             : ElevatedButton(onPressed: onPressed, child: Text(title)),
