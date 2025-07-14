@@ -6,10 +6,37 @@ import '../../navigation_menu.dart';
 import '../../utils/constant/sizes.dart';
 
 class PointScreen extends StatelessWidget {
-  const PointScreen({super.key});
+  final int score;
+  final int totalQuestions;
+
+  const PointScreen({
+    super.key,
+    required this.score,
+    required this.totalQuestions,
+  });
 
   @override
   Widget build(BuildContext context) {
+    final percentage = ((score / totalQuestions) * 100).round();
+
+    String animationPath;
+    String title;
+    String message;
+
+    if (percentage >= 90) {
+      animationPath = 'assets/animations/success-animation.json';
+      title = 'Selamat!';
+      message = 'Anda luar biasa! Terus pertahankan prestasi Anda.';
+    } else if (percentage >= 70) {
+      animationPath = 'assets/animations/good-animation.json';
+      title = 'Kerja bagus!';
+      message = 'Hasil yang baik, tingkatkan lagi untuk mendapatkan nilai sempurna!';
+    } else {
+      animationPath = 'assets/animations/fail-animation.json';
+      title = 'Tetap semangat!';
+      message = 'Jangan menyerah, terus belajar dan coba lagi.';
+    }
+
     return Scaffold(
       body: Padding(
         padding: const EdgeInsets.all(MSizes.paddingAll),
@@ -19,25 +46,26 @@ class PointScreen extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Lottie.asset(
-                'assets/animations/success-animation.json',
-                width: 250,
-                height: 250,
+                animationPath,
+                width: 350,
+                height: 350,
                 fit: BoxFit.contain,
               ),
-              SizedBox(height: MSizes.spaceBtwMenu),
+              const SizedBox(height: MSizes.spaceBtwMenu),
               Text(
-                'Selamat!',
-                style: Theme.of(
-                  context,
-                ).textTheme.titleLarge!.copyWith(fontSize: 25),
+                title,
+                style: Theme.of(context)
+                    .textTheme
+                    .titleLarge!
+                    .copyWith(fontSize: 25),
               ),
-              SizedBox(height: MSizes.spaceBtwMenu),
+              const SizedBox(height: MSizes.spaceBtwMenu),
               Text(
-                'Anda telah menyelesaikan kuis penjumlahan dengan nilai yang bagus.\nTetap pertahankan kualitas Anda!',
+                'Nilai Anda: $percentage%\nBenar $score dari $totalQuestions\n\n$message',
                 textAlign: TextAlign.center,
                 style: Theme.of(context).textTheme.bodySmall,
               ),
-              SizedBox(height: MSizes.spaceBtwSections),
+              const SizedBox(height: MSizes.spaceBtwSections),
               SizedBox(
                 width: 200,
                 height: 30,
