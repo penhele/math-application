@@ -59,7 +59,6 @@ class QuizCard extends StatelessWidget {
                   ),
                 ),
               ),
-
               Positioned(
                 top: top ? null : 0,
                 bottom: top ? 0 : null,

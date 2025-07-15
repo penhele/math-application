@@ -9,15 +9,15 @@ class QuestionGenerator {
     final random = Random();
 
     return List.generate(total, (index) {
-      int a = random.nextInt(20) + 1;
-      int b = random.nextInt(20) + 1;
+      int a = random.nextInt(10) + 1;
+      int b = random.nextInt(10) + 1;
       int result;
       String questionText;
 
       switch (operation) {
         case OperationType.addition:
           result = a + b;
-          questionText = '$a + $b = ?';
+          questionText = '$a + $b = ...';
           break;
         case OperationType.subtraction:
           if (a < b) {
@@ -26,16 +26,16 @@ class QuestionGenerator {
             b = temp;
           }
           result = a - b;
-          questionText = '$a - $b = ?';
+          questionText = '$a - $b = ...';
           break;
         case OperationType.multiplication:
           result = a * b;
-          questionText = '$a × $b = ?';
+          questionText = '$a × $b = ...';
           break;
         case OperationType.division:
           result = a;
           int dividend = a * b;
-          questionText = '$dividend ÷ $b = ?';
+          questionText = '$dividend ÷ $b = ...';
           break;
       }
 

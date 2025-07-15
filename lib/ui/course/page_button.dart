@@ -10,6 +10,8 @@ class MPageButton extends StatelessWidget {
     required this.onPressed,
     required this.title,
     this.isOutlined = false,
+    this.width = 175,
+    this.height = 50,
   });
 
   final String title;
@@ -17,6 +19,8 @@ class MPageButton extends StatelessWidget {
   final double? left;
   final bool isOutlined;
   final VoidCallback? onPressed;
+  final double width;
+  final double height;
 
   @override
   Widget build(BuildContext context) {
@@ -25,8 +29,8 @@ class MPageButton extends StatelessWidget {
       left: left,
       bottom: MSizes.paddingAll,
       child: SizedBox(
-        width: 175,
-        height: 50,
+        width: width,
+        height: height,
         child: isOutlined
             ? OutlinedButton(onPressed: onPressed, child: Text(title))
             : ElevatedButton(onPressed: onPressed, child: Text(title)),

@@ -103,58 +103,56 @@ class QuizScreenState extends State<QuizScreen> {
                 );
               },
             ),
+            const SizedBox(height: MSizes.spaceBtwSections,),
 
-            const Spacer(),
-            Align(
-              alignment: Alignment.centerRight,
-              child: MPageButton(
-                title: currentIndex == questions.length - 1
-                    ? "Selesai"
-                    : "Lanjut",
-                onPressed: () {
-                  final correctAnswer = questions[currentIndex].correctAnswer;
-
-                  if (selectedAnswer == null) {
-                    TLoaders.warningSnackBar(
-                      title: 'Belum memilih jawaban',
-                      message:
-                          'Silakan pilih salah satu jawaban terlebih dahulu.',
-                    );
-                    return;
-                  }
-
-                  selectedAnswers[currentIndex] = selectedAnswer!;
-
-                  if (selectedAnswer == correctAnswer) {
-                    score++;
-                    TLoaders.correctSnackBar(
-                      title: 'Benar!',
-                      message: 'Jawaban kamu tepat.',
-                    );
+            MPageButton(
+              width: double.infinity,
+              title: currentIndex == questions.length - 1
+                  ? "Selesai"
+                  : "Lanjut",
+              onPressed: () {
+                final correctAnswer = questions[currentIndex].correctAnswer;
+            
+                if (selectedAnswer == null) {
+                  TLoaders.warningSnackBar(
+                    title: 'Belum memilih jawaban',
+                    message:
+                        'Silakan pilih salah satu jawaban terlebih dahulu.',
+                  );
+                  return;
+                }
+            
+                selectedAnswers[currentIndex] = selectedAnswer!;
+            
+                if (selectedAnswer == correctAnswer) {
+                  score++;
+                  TLoaders.correctSnackBar(
+                    title: 'Benar!',
+                    message: 'Jawaban kamu tepat.',
+                  );
+                } else {
+                  TLoaders.wrongSnackBar(
+                    title: 'Salah!',
+                    message: 'Jawaban yang benar: $correctAnswer',
+                  );
+                }
+            
+                Future.delayed(const Duration(milliseconds: 600), () {
+                  if (currentIndex < questions.length - 1) {
+                    setState(() {
+                      currentIndex++;
+                      selectedAnswer = null; 
+                    });
                   } else {
-                    TLoaders.wrongSnackBar(
-                      title: 'Salah!',
-                      message: 'Jawaban yang benar: $correctAnswer',
+                    Get.to(
+                      () => PointScreen(
+                        score: score,
+                        totalQuestions: questions.length,
+                      ),
                     );
                   }
-
-                  Future.delayed(const Duration(milliseconds: 600), () {
-                    if (currentIndex < questions.length - 1) {
-                      setState(() {
-                        currentIndex++;
-                        selectedAnswer = null; // Reset for next question
-                      });
-                    } else {
-                      Get.to(
-                        () => PointScreen(
-                          score: score,
-                          totalQuestions: questions.length,
-                        ),
-                      );
-                    }
-                  });
-                },
-              ),
+                });
+              },
             ),
           ],
         ),
