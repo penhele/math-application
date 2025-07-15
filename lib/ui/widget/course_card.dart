@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../utils/constant/sizes.dart';
+import '../../utils/helper/operation_type.dart';
 import '../course/course.dart';
 
 class CourseCard extends StatelessWidget {
@@ -10,16 +11,18 @@ class CourseCard extends StatelessWidget {
     required this.title,
     this.iconData,
     required this.backgroundColor,
+    required this.operation,
   });
 
   final String title;
   final IconData? iconData;
   final Color backgroundColor;
+  final OperationType operation;
 
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () => Get.to(() => const CourseScreen()),
+      onTap: () => Get.to(() => CourseScreen(operation: operation)),
       borderRadius: BorderRadius.circular(MSizes.borderRadiusLg),
       splashColor: backgroundColor.withValues(alpha: 0.2),
       child: Container(

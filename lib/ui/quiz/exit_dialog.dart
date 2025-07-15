@@ -10,15 +10,15 @@ Future<bool> showExitQuizDialog(BuildContext context) async {
     animType: AnimType.scale,
     title: 'Peringatan',
     desc: 'Hasil tidak akan disimpan jika Anda keluar.',
-    btnCancelText: 'Tidak',
-    btnOkText: 'Ya',
+    btnCancelText: 'Keluar',
+    btnOkText: 'Tetap',
     btnCancelOnPress: () {
-      result = false;
-    },
-    btnOkOnPress: () {
       result = true;
     },
-    barrierColor: Colors.black.withValues(alpha:  0.2), 
+    btnOkOnPress: () {
+      result = false;
+    },
+    barrierColor: Colors.black.withValues(alpha: 0.2),
     dismissOnTouchOutside: false,
   ).show();
 

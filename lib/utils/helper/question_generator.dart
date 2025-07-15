@@ -4,13 +4,16 @@ import '../../data/question.dart';
 import 'operation_type.dart';
 
 class QuestionGenerator {
-  static List<QuizQuestion> generate(OperationType operation, int total)
- {
+  static List<QuizQuestion> generate(
+    OperationType operation,
+    int total, {
+    totalNumber = 10,
+  }) {
     final random = Random();
 
     return List.generate(total, (index) {
-      int a = random.nextInt(10) + 1;
-      int b = random.nextInt(10) + 1;
+      int a = random.nextInt(totalNumber) + 1;
+      int b = random.nextInt(totalNumber) + 1;
       int result;
       String questionText;
 
@@ -40,6 +43,7 @@ class QuestionGenerator {
       }
 
       final options = _generateOptions(correctAnswer: result);
+
       return QuizQuestion(
         question: questionText,
         correctAnswer: result.toString(),

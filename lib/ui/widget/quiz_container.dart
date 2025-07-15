@@ -15,7 +15,7 @@ class QuizContainer extends StatelessWidget {
   Widget build(BuildContext context) {
     final isDark = MHelperFunction.isDarkMode(context);
 
-    final totalQuestionsTambah = 4;
+    final totalQuestionsTambah = 10;
     final totalQuestionsKurang = 10;
     final totalQuestionsKali = 10;
     final totalQuestionsBagi = 10;

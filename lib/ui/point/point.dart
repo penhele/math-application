@@ -30,7 +30,8 @@ class PointScreen extends StatelessWidget {
     } else if (percentage >= 70) {
       animationPath = 'assets/animations/good-animation.json';
       title = 'Kerja bagus!';
-      message = 'Hasil yang baik, tingkatkan lagi untuk mendapatkan nilai sempurna!';
+      message =
+          'Hasil yang baik, tingkatkan lagi untuk mendapatkan nilai sempurna!';
     } else {
       animationPath = 'assets/animations/fail-animation.json';
       title = 'Tetap semangat!';
@@ -54,10 +55,9 @@ class PointScreen extends StatelessWidget {
               const SizedBox(height: MSizes.spaceBtwMenu),
               Text(
                 title,
-                style: Theme.of(context)
-                    .textTheme
-                    .titleLarge!
-                    .copyWith(fontSize: 25),
+                style: Theme.of(
+                  context,
+                ).textTheme.titleLarge!.copyWith(fontSize: 25),
               ),
               const SizedBox(height: MSizes.spaceBtwMenu),
               Text(

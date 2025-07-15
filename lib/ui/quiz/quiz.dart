@@ -27,7 +27,7 @@ class QuizScreen extends StatefulWidget {
   State<QuizScreen> createState() => QuizScreenState();
 }
 
-class QuizScreenState extends State<QuizScreen> {
+class QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
   late List<QuizQuestion> questions;
   int currentIndex = 0;
   String? selectedAnswer;
@@ -41,120 +41,153 @@ class QuizScreenState extends State<QuizScreen> {
       widget.operation,
       widget.totalQuestions,
     );
+    WidgetsBinding.instance.addObserver(this);
+  }
+
+  @override
+  void dispose() {
+    WidgetsBinding.instance.removeObserver(this);
+    super.dispose();
+  }
+
+  @override
+  void didChangeAppLifecycleState(AppLifecycleState state) {
+    if (state == AppLifecycleState.paused) {
+      _handleAppExitByHome();
+    }
+  }
+
+  Future<void> _handleAppExitByHome() async {
+    final exit = await showExitQuizDialog(context);
+    if (exit) {
+      Get.offAll(() => NavigationMenu());
+    }
+  }
+
+  Future<bool> _onWillPop() async {
+    final exit = await showExitQuizDialog(context);
+    if (exit) {
+      Get.offAll(() => NavigationMenu());
+      return true;
+    }
+    return false;
   }
 
   @override
   Widget build(BuildContext context) {
     final question = questions[currentIndex];
 
-    return Scaffold(
-      appBar: AppBar(
-        leading: IconButton(
-          icon: const Icon(Icons.arrow_back),
-          onPressed: () async {
-            final exit = await showExitQuizDialog(context);
-            if (exit) Get.offAll(() => NavigationMenu());
-          },
+    return WillPopScope(
+      onWillPop: _onWillPop,
+      child: Scaffold(
+        appBar: AppBar(
+          leading: IconButton(
+            icon: const Icon(Icons.arrow_back),
+            onPressed: () async {
+              final exit = await showExitQuizDialog(context);
+              if (exit) Get.offAll(() => NavigationMenu());
+            },
+          ),
         ),
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            MSectionHeading(
-              title: 'Soal ${currentIndex + 1}/${questions.length}',
-            ),
-            const SizedBox(height: 20),
-
-            Center(
-              child: Text(
-                question.question,
-                style: const TextStyle(fontSize: 28),
+        body: Padding(
+          padding: const EdgeInsets.all(16.0),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              MSectionHeading(
+                title: 'Soal ${currentIndex + 1}/${questions.length}',
               ),
-            ),
-            const SizedBox(height: 30),
+              const SizedBox(height: 20),
 
-            LayoutBuilder(
-              builder: (context, constraints) {
-                const itemPerRow = 3;
-                final totalSpacing = (itemPerRow - 1) * MSizes.spaceBtwMenu;
-                final itemWidth =
-                    (constraints.maxWidth - totalSpacing) / itemPerRow;
+              Center(
+                child: Text(
+                  question.question,
+                  style: const TextStyle(fontSize: 28),
+                ),
+              ),
+              const SizedBox(height: 30),
 
-                return Wrap(
-                  spacing: MSizes.spaceBtwMenu,
-                  runSpacing: MSizes.spaceBtwMenu,
-                  children: question.options.map((option) {
-                    final isSelected = selectedAnswer == option;
-                    return SizedBox(
-                      width: itemWidth,
-                      child: AnswerCard(
-                        answer: option,
-                        isSelected: isSelected,
-                        onTap: () {
-                          setState(() {
-                            selectedAnswer = option;
-                          });
-                        },
-                      ),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  const itemPerRow = 3;
+                  final totalSpacing = (itemPerRow - 1) * MSizes.spaceBtwMenu;
+                  final itemWidth =
+                      (constraints.maxWidth - totalSpacing) / itemPerRow;
+
+                  return Wrap(
+                    spacing: MSizes.spaceBtwMenu,
+                    runSpacing: MSizes.spaceBtwMenu,
+                    children: question.options.map((option) {
+                      final isSelected = selectedAnswer == option;
+                      return SizedBox(
+                        width: itemWidth,
+                        child: AnswerCard(
+                          answer: option,
+                          isSelected: isSelected,
+                          onTap: () {
+                            setState(() {
+                              selectedAnswer = option;
+                            });
+                          },
+                        ),
+                      );
+                    }).toList(),
+                  );
+                },
+              ),
+              const SizedBox(height: MSizes.spaceBtwSections),
+
+              MPageButton(
+                width: double.infinity,
+                title: currentIndex == questions.length - 1
+                    ? "Selesai"
+                    : "Lanjut",
+                onPressed: () {
+                  final correctAnswer = questions[currentIndex].correctAnswer;
+
+                  if (selectedAnswer == null) {
+                    TLoaders.warningSnackBar(
+                      title: 'Belum memilih jawaban',
+                      message:
+                          'Silakan pilih salah satu jawaban terlebih dahulu.',
                     );
-                  }).toList(),
-                );
-              },
-            ),
-            const SizedBox(height: MSizes.spaceBtwSections,),
+                    return;
+                  }
 
-            MPageButton(
-              width: double.infinity,
-              title: currentIndex == questions.length - 1
-                  ? "Selesai"
-                  : "Lanjut",
-              onPressed: () {
-                final correctAnswer = questions[currentIndex].correctAnswer;
-            
-                if (selectedAnswer == null) {
-                  TLoaders.warningSnackBar(
-                    title: 'Belum memilih jawaban',
-                    message:
-                        'Silakan pilih salah satu jawaban terlebih dahulu.',
-                  );
-                  return;
-                }
-            
-                selectedAnswers[currentIndex] = selectedAnswer!;
-            
-                if (selectedAnswer == correctAnswer) {
-                  score++;
-                  TLoaders.correctSnackBar(
-                    title: 'Benar!',
-                    message: 'Jawaban kamu tepat.',
-                  );
-                } else {
-                  TLoaders.wrongSnackBar(
-                    title: 'Salah!',
-                    message: 'Jawaban yang benar: $correctAnswer',
-                  );
-                }
-            
-                Future.delayed(const Duration(milliseconds: 600), () {
-                  if (currentIndex < questions.length - 1) {
-                    setState(() {
-                      currentIndex++;
-                      selectedAnswer = null; 
-                    });
+                  selectedAnswers[currentIndex] = selectedAnswer!;
+
+                  if (selectedAnswer == correctAnswer) {
+                    score++;
+                    TLoaders.correctSnackBar(
+                      title: 'Benar!',
+                      message: 'Jawaban kamu tepat.',
+                    );
                   } else {
-                    Get.to(
-                      () => PointScreen(
-                        score: score,
-                        totalQuestions: questions.length,
-                      ),
+                    TLoaders.wrongSnackBar(
+                      title: 'Salah!',
+                      message: 'Jawaban yang benar: $correctAnswer',
                     );
                   }
-                });
-              },
-            ),
-          ],
+
+                  Future.delayed(const Duration(milliseconds: 600), () {
+                    if (currentIndex < questions.length - 1) {
+                      setState(() {
+                        currentIndex++;
+                        selectedAnswer = null;
+                      });
+                    } else {
+                      Get.to(
+                        () => PointScreen(
+                          score: score,
+                          totalQuestions: questions.length,
+                        ),
+                      );
+                    }
+                  });
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
