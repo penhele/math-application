@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../navigation_menu.dart';
 import '../../utils/constant/sizes.dart';
 import '../../utils/helper/loaders.dart';
 import '../../utils/helper/operation_type.dart';
+import '../home/home.dart';
 import 'course_controller.dart';
 import 'example/example.dart';
 import 'exercise/exercise.dart';
@@ -42,7 +42,7 @@ class CourseScreen extends StatelessWidget {
         children: [
           PageView(
             controller: controller.pageController,
-            physics: NeverScrollableScrollPhysics(),
+            physics: const NeverScrollableScrollPhysics(),
             children: [
               IntroPage(operation: operation),
               ExamplePage(operation: operation),
@@ -58,7 +58,7 @@ class CourseScreen extends StatelessWidget {
                     onPressed: () => controller.previousPage(),
                     isOutlined: true,
                   )
-                : SizedBox(),
+                : const SizedBox(),
           ),
 
           Obx(() {
@@ -87,8 +87,8 @@ class CourseScreen extends StatelessWidget {
                       title: 'Benar!',
                       message: 'Jawaban kamu tepat.',
                     );
-                    Future.delayed(Duration(seconds: 2), () {
-                      Get.offAll(() => NavigationMenu());
+                    Future.delayed(const Duration(seconds: 2), () {
+                      Get.offAll(() => const HomeScreen());
                     });
                   } else {
                     TLoaders.wrongSnackBar(

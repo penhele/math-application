@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:lottie/lottie.dart';
 
-import '../../navigation_menu.dart';
 import '../../utils/constant/sizes.dart';
+import '../home/home.dart';
 
 class PointScreen extends StatelessWidget {
   final int score;
@@ -70,7 +70,7 @@ class PointScreen extends StatelessWidget {
                 width: 200,
                 height: 30,
                 child: OutlinedButton(
-                  onPressed: () => Get.to(() => NavigationMenu()),
+                  onPressed: () => Get.to(() => const HomeScreen()),
                   child: Text(
                     'Tutup',
                     style: Theme.of(context).textTheme.bodySmall,

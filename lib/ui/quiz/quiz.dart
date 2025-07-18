@@ -2,12 +2,12 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 import '../../data/question.dart';
-import '../../navigation_menu.dart';
 import '../../utils/constant/sizes.dart';
 import '../../utils/helper/loaders.dart';
 import '../../utils/helper/operation_type.dart';
 import '../../utils/helper/question_generator.dart';
 import '../course/page_button.dart';
+import '../home/home.dart';
 import '../point/point.dart';
 import '../widget/section_heading.dart';
 import 'answer_card.dart';
@@ -60,14 +60,14 @@ class QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
   Future<void> _handleAppExitByHome() async {
     final exit = await showExitQuizDialog(context);
     if (exit) {
-      Get.offAll(() => NavigationMenu());
+      Get.offAll(() => const HomeScreen());
     }
   }
 
   Future<bool> _onWillPop() async {
     final exit = await showExitQuizDialog(context);
     if (exit) {
-      Get.offAll(() => NavigationMenu());
+      Get.offAll(() => const HomeScreen());
       return true;
     }
     return false;
@@ -85,7 +85,7 @@ class QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
             icon: const Icon(Icons.arrow_back),
             onPressed: () async {
               final exit = await showExitQuizDialog(context);
-              if (exit) Get.offAll(() => NavigationMenu());
+              if (exit) Get.offAll(() => const HomeScreen());
             },
           ),
         ),

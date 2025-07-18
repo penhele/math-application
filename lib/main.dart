@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:provider/provider.dart';
 
-import 'navigation_menu.dart';
 import 'provider/mode_provider.dart';
+import 'ui/home/home.dart';
 import 'utils/theme/theme.dart';
 
 void main() {
@@ -27,7 +27,7 @@ class MyApp extends StatelessWidget {
           : ThemeMode.dark,
       theme: MAppTheme.lightTheme,
       darkTheme: MAppTheme.darkTheme,
-      home: const NavigationMenu(),
+      home: const HomeScreen(),
     );
   }
 }
