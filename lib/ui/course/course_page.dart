@@ -16,7 +16,7 @@ class MCoursePage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           MSectionHeading(title: title),
-          SizedBox(height: MSizes.spaceBtwItems),
+          const SizedBox(height: MSizes.spaceBtwItems),
           Text(
             'Pertambahan adalah menjumlahkan dua atau lebih angka menjadi satu hasil. Kita bisa menggunakan tanda tambah (+) untuk menghitung pertambahan.',
             style: Theme.of(context).textTheme.bodyMedium,

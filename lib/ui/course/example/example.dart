@@ -44,13 +44,13 @@ class ExamplePage extends StatelessWidget {
     Icon getOperationIcon(OperationType op) {
       switch (op) {
         case OperationType.addition:
-          return Icon(Iconsax.add, size: 30);
+          return const Icon(Iconsax.add, size: 30);
         case OperationType.subtraction:
-          return Icon(Iconsax.minus, size: 30);
+          return const Icon(Iconsax.minus, size: 30);
         case OperationType.multiplication:
-          return Icon(Icons.close, size: 30);
+          return const Icon(Icons.close, size: 30);
         case OperationType.division:
-          return Icon(Icons.percent, size: 30);
+          return const Icon(Icons.percent, size: 30);
       }
     }
 
@@ -69,31 +69,41 @@ class ExamplePage extends StatelessWidget {
 
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(MSizes.paddingAll),
+        padding: const EdgeInsets.all(MSizes.paddingAll),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MSectionHeading(title: getTitle(operation)),
-            SizedBox(height: MSizes.spaceBtwItems),
+            const SizedBox(height: MSizes.spaceBtwItems),
 
-            Text(getQuestion(operation)),
-            SizedBox(height: MSizes.spaceBtwItems),
+            Text(
+              getQuestion(operation),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium!.copyWith(fontSize: 18),
+            ),
+            const SizedBox(height: MSizes.spaceBtwItems),
 
             Row(
               children: [
                 for (int i = 0; i < a; i++)
                   Image.asset('assets/images/apple.png', height: 50),
-                SizedBox(width: MSizes.spaceBtwMenu),
+                const SizedBox(width: MSizes.spaceBtwMenu),
                 getOperationIcon(operation),
-                SizedBox(width: MSizes.spaceBtwMenu),
+                const SizedBox(width: MSizes.spaceBtwMenu),
                 for (int i = 0; i < b; i++)
                   Image.asset('assets/images/apple.png', height: 50),
               ],
             ),
-            SizedBox(height: MSizes.spaceBtwItems),
+            const SizedBox(height: MSizes.spaceBtwItems),
 
-            Text('Lalu kita hitung hasilnya'),
-            SizedBox(height: MSizes.spaceBtwItems),
+            Text(
+              'Lalu kita hitung hasilnya',
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium!.copyWith(fontSize: 18),
+            ),
+            const SizedBox(height: MSizes.spaceBtwItems),
 
             Container(
               padding: const EdgeInsets.all(12),

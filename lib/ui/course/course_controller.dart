@@ -20,7 +20,7 @@ class CourseController extends GetxController {
   void nextPage() {
     if (currentPage.value < totalPages - 1) {
       pageController.nextPage(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.ease,
       );
     }
@@ -29,7 +29,7 @@ class CourseController extends GetxController {
   void previousPage() {
     if (currentPage.value > 0) {
       pageController.previousPage(
-        duration: Duration(milliseconds: 300),
+        duration: const Duration(milliseconds: 300),
         curve: Curves.ease,
       );
     }

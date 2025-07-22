@@ -50,8 +50,16 @@ class ProfileScreen extends StatelessWidget {
                 inactiveColor: Colors.grey.shade300,
                 activeToggleColor: MColors.white,
                 inactiveToggleColor: MColors.white,
-                activeIcon: Icon(Iconsax.moon, color: Colors.black, size: 16),
-                inactiveIcon: Icon(Icons.sunny, color: Colors.orange, size: 16),
+                activeIcon: const Icon(
+                  Iconsax.moon,
+                  color: Colors.black,
+                  size: 16,
+                ),
+                inactiveIcon: const Icon(
+                  Icons.sunny,
+                  color: Colors.orange,
+                  size: 16,
+                ),
                 onToggle: (val) {
                   Provider.of<ModeProvider>(
                     context,

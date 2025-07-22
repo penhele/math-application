@@ -86,46 +86,56 @@ class _ExercisePageState extends State<ExercisePage> {
     Icon getOperatorIcon(OperationType op) {
       switch (op) {
         case OperationType.addition:
-          return Icon(Iconsax.add, size: 30);
+          return const Icon(Iconsax.add, size: 30);
         case OperationType.subtraction:
-          return Icon(Iconsax.minus, size: 30);
+          return const Icon(Iconsax.minus, size: 30);
         case OperationType.multiplication:
-          return Icon(Icons.close, size: 30);
+          return const Icon(Icons.close, size: 30);
         case OperationType.division:
-          return Icon(Icons.percent, size: 30);
+          return const Icon(Icons.percent, size: 30);
       }
     }
 
     return Scaffold(
       body: Padding(
-        padding: EdgeInsets.all(MSizes.paddingAll),
+        padding: const EdgeInsets.all(MSizes.paddingAll),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             MSectionHeading(title: getTitle(widget.operation)),
-            SizedBox(height: MSizes.spaceBtwItems),
+            const SizedBox(height: MSizes.spaceBtwItems),
 
-            Text(getQuestionText(widget.operation)),
-            SizedBox(height: MSizes.spaceBtwItems),
+            Text(
+              getQuestionText(widget.operation),
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium!.copyWith(fontSize: 18),
+            ),
+            const SizedBox(height: MSizes.spaceBtwItems),
 
             Row(
               children: [
                 for (int i = 0; i < left; i++)
                   Image.asset('assets/images/apple.png', height: 50),
 
-                SizedBox(width: MSizes.spaceBtwMenu),
+                const SizedBox(width: MSizes.spaceBtwMenu),
                 getOperatorIcon(widget.operation),
-                SizedBox(width: MSizes.spaceBtwMenu),
+                const SizedBox(width: MSizes.spaceBtwMenu),
 
                 for (int i = 0; i < right; i++)
                   Image.asset('assets/images/apple.png', height: 50),
               ],
             ),
 
-            SizedBox(height: MSizes.spaceBtwItems * 2),
+            const SizedBox(height: MSizes.spaceBtwItems * 2),
 
-            Text('Pilih jawabanmu:'),
-            SizedBox(height: MSizes.spaceBtwItems),
+            Text(
+              'Pilih jawabanmu:',
+              style: Theme.of(
+                context,
+              ).textTheme.bodyMedium!.copyWith(fontSize: 18),
+            ),
+            const SizedBox(height: MSizes.spaceBtwItems),
 
             LayoutBuilder(
               builder: (context, constraints) {

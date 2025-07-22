@@ -46,7 +46,9 @@ class IntroPage extends StatelessWidget {
           const SizedBox(height: MSizes.spaceBtwItems),
           Text(
             getContent(operation),
-            style: Theme.of(context).textTheme.bodyMedium,
+            style: Theme.of(
+              context,
+            ).textTheme.bodyMedium!.copyWith(fontSize: 18),
           ),
         ],
       ),

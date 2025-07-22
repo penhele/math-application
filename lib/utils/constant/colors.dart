@@ -15,4 +15,8 @@ class MColors {
 
   static const Color darkerGrey = Color(0xFF4F4F4F);
   static const Color grey = Colors.grey;
+
+  static const Color correct = Color(0xFF28A745);
+  static const Color wrong = Color(0xFFDC3545);
+  static const Color warning = Color(0xFFFFC107);
 }

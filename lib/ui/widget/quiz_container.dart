@@ -30,7 +30,7 @@ class QuizContainer extends StatelessWidget {
               title: 'Penjumlahan',
               height: 220,
               totalQuestions: totalQuestionsTambah,
-              color: isDark ? Color(0xFF3949AB) : MColors.blue,
+              color: isDark ? const Color(0xFF3949AB) : MColors.blue,
               top: true,
               onTap: () => Get.to(
                 () => QuizScreen(
@@ -44,7 +44,7 @@ class QuizContainer extends StatelessWidget {
               title: 'Pengurangan',
               height: 180,
               totalQuestions: totalQuestionsKurang,
-              color: isDark ? Color(0xFFD32F2F) : MColors.red,
+              color: isDark ? const Color(0xFFD32F2F) : MColors.red,
               top: false,
               onTap: () => Get.to(
                 () => QuizScreen(
@@ -63,7 +63,7 @@ class QuizContainer extends StatelessWidget {
               title: 'Perkalian',
               height: 180,
               totalQuestions: totalQuestionsKali,
-              color: isDark ? Color(0xFF388E3C) : MColors.green,
+              color: isDark ? const Color(0xFF388E3C) : MColors.green,
               top: true,
               onTap: () => Get.to(
                 () => QuizScreen(
@@ -77,7 +77,7 @@ class QuizContainer extends StatelessWidget {
               title: 'Pembagian',
               height: 220,
               totalQuestions: totalQuestionsBagi,
-              color: isDark ? Color(0xFFFBC02D) : MColors.yellow,
+              color: isDark ? const Color(0xFFFBC02D) : MColors.yellow,
               top: false,
               onTap: () => Get.to(
                 () => QuizScreen(
