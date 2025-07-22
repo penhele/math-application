@@ -22,7 +22,6 @@ class CourseScreen extends StatelessWidget {
     final controller = Get.put(CourseController());
     final exerciseController = Get.put(ExerciseController());
 
-    // Buat judul dinamis berdasarkan operation
     String getTitle(OperationType op) {
       switch (op) {
         case OperationType.addition:
@@ -74,7 +73,7 @@ class CourseScreen extends StatelessWidget {
                 right: MSizes.paddingAll,
                 onPressed: () {
                   if (!exerciseController.isAnswered) {
-                    TLoaders.warningSnackBar(
+                    SLoaders.warningSnackBar(
                       title: 'Belum memilih jawaban',
                       message:
                           'Silakan pilih salah satu jawaban terlebih dahulu.',
@@ -83,7 +82,7 @@ class CourseScreen extends StatelessWidget {
                   }
 
                   if (exerciseController.isCorrect) {
-                    TLoaders.correctSnackBar(
+                    SLoaders.correctSnackBar(
                       title: 'Benar!',
                       message: 'Jawaban kamu tepat.',
                     );
@@ -91,7 +90,7 @@ class CourseScreen extends StatelessWidget {
                       Get.offAll(() => const HomeScreen());
                     });
                   } else {
-                    TLoaders.wrongSnackBar(
+                    SLoaders.wrongSnackBar(
                       title: 'Salah!',
                       message: 'Perhatikan soalnya. Jangan terburu-buru.',
                     );

@@ -146,7 +146,7 @@ class QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
                   final correctAnswer = questions[currentIndex].correctAnswer;
 
                   if (selectedAnswer == null) {
-                    TLoaders.warningSnackBar(
+                    SLoaders.warningSnackBar(
                       title: 'Belum memilih jawaban',
                       message:
                           'Silakan pilih salah satu jawaban terlebih dahulu.',
@@ -158,12 +158,12 @@ class QuizScreenState extends State<QuizScreen> with WidgetsBindingObserver {
 
                   if (selectedAnswer == correctAnswer) {
                     score++;
-                    TLoaders.correctSnackBar(
+                    SLoaders.correctSnackBar(
                       title: 'Benar!',
                       message: 'Jawaban kamu tepat.',
                     );
                   } else {
-                    TLoaders.wrongSnackBar(
+                    SLoaders.wrongSnackBar(
                       title: 'Salah!',
                       message: 'Jawaban yang benar: $correctAnswer',
                     );

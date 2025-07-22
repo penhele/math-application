@@ -4,7 +4,7 @@ import 'package:iconsax/iconsax.dart';
 
 import '../constant/colors.dart';
 
-class TLoaders {
+class SLoaders {
   static correctSnackBar({required title, message = '', duration = 1}) {
     Get.snackbar(
       title,
